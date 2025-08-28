@@ -22,10 +22,10 @@
       <nav class="navbar">
         <div class="logo">Jairo’s Flooring</div>
 
-        <!-- Hamburger (mobile) -->
+        <!-- Hamburger (navbar, hidden on mobile if using only FAB) -->
         <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
 
-        <!-- Menu -->
+        <!-- Menu (hidden on mobile; mobile uses drawer) -->
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#services">Services</a></li>
@@ -45,7 +45,7 @@
     </header>
 
     <!-- Hero -->
-    <section id="home" class="hero">
+    <section id="home" class="hero" style="background-image:url('images/wood.png')">
       <div class="hero-content">
         <h1>Jairo’s Flooring: Quality Flooring &amp; Carpets in Seattle</h1>
         <p>Quality, passion and experience in every project</p>
@@ -174,14 +174,50 @@
       <p>&copy; 2025 Jairo’s Flooring. All rights reserved.</p>
     </footer>
 
-    <!-- JS for mobile menu -->
+    <!-- ===== Mobile menu: FAB + Drawer ===== -->
+    <button class="fab" aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false">☰</button>
+
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="drawer-backdrop"></div>
+      <nav class="drawer-panel">
+        <button class="drawer-close" aria-label="Close menu">×</button>
+        <ul class="drawer-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#why">Why Us?</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="drawer-lang">
+          <a class="lang-btn" href="index.html" hreflang="es">ES</a>
+          <a class="lang-btn active" href="index_en.html">EN</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- JS: navbar toggle (desktop) + FAB/Drawer (mobile) -->
     <script>
-      const btn = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('.nav-links');
-      btn?.addEventListener('click', () => {
-        const open = nav.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      const navBtn = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      navBtn?.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        navBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
+
+      const fab = document.querySelector('.fab');
+      const drawer = document.getElementById('mobile-drawer');
+      const closeBtn = drawer?.querySelector('.drawer-close');
+      const backdrop = drawer?.querySelector('.drawer-backdrop');
+
+      function openDrawer(){ drawer?.classList.add('open'); fab?.setAttribute('aria-expanded','true'); }
+      function closeDrawer(){ drawer?.classList.remove('open'); fab?.setAttribute('aria-expanded','false'); }
+
+      fab?.addEventListener('click', openDrawer);
+      closeBtn?.addEventListener('click', closeDrawer);
+      backdrop?.addEventListener('click', closeDrawer);
+      drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
     </script>
   </body>
 </html>
