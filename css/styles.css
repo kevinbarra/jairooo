@@ -1,8 +1,10 @@
-/* ===== Design tokens ===== */
+/* =========================
+   Design tokens (variables)
+   ========================= */
 :root {
   --primary-color: #8a6842;   /* marrón cálido */
   --secondary-color: #5f5f5f;
-  --light-color: #f7f4ed;     /* fondo cálido (evita bordes blancos) */
+  --light-color: #f7f4ed;     /* fondo cálido: evita bordes blancos */
   --dark-color: #333333;
   --max-width: 1200px;
 }
@@ -17,15 +19,19 @@ body {
   background-color: var(--light-color);
 }
 
-/* ===== Navbar ===== */
+/* =========================
+   Navbar (fija, limpia)
+   ========================= */
 .navbar {
-  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  position: fixed;
+  inset: 0 0 auto 0;  /* top:0; left:0; right:0 */
+  z-index: 100;
   display: grid;
-  grid-template-columns: 1fr auto auto; /* logo | nav | lang */
+  grid-template-columns: 1fr auto auto; /* logo | nav | idioma */
   align-items: center;
   gap: 1rem;
   padding: 0.75rem 1.25rem;
-  background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.92) 100%);
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.92) 100%);
   border-bottom: 1px solid rgba(0,0,0,0.06);
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
@@ -42,7 +48,8 @@ body {
   list-style: none;
   display: flex;
   gap: 1.25rem;
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
   justify-self: center; /* centrado en desktop */
 }
 
@@ -54,7 +61,7 @@ body {
 }
 .nav-links a:hover { color: var(--primary-color); }
 
-/* ===== Language pill toggle ===== */
+/* Selector de idioma (pill) */
 .lang-switch {
   justify-self: end;
   display: inline-flex;
@@ -77,9 +84,9 @@ body {
 .lang-btn:hover { background: #f6f2ea; }
 .lang-btn.active { background: var(--primary-color); color: #fff; font-weight: 700; }
 
-/* Botón hamburguesa (móvil) */
+/* Botón hamburguesa de la navbar (no lo usamos en móvil porque habrá FAB) */
 .menu-toggle {
-  display: none;
+  display: none;           /* oculto por defecto */
   background: transparent;
   border: 0;
   font-size: 1.25rem;
@@ -87,37 +94,55 @@ body {
   cursor: pointer;
 }
 
-/* ===== Hero ===== */
+/* =========================
+   Hero full-bleed (ancho completo)
+   ========================= */
 .hero {
   height: 100vh;
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
+  max-width: none;  /* ignora el ancho de las secciones */
+  width: 100%;
   background-image: url('../images/wood.png'); /* fallback si no hay inline */
   background-size: cover;
   background-position: center;
   position: relative;
-  display: flex; align-items: center; justify-content: center;
-  text-align: center; color: #fff;
-  margin-top: 60px; /* compensar navbar fija */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 60px; /* compensa la navbar fija */
 }
 .hero::before {
-  content: ''; position: absolute; inset: 0;
-  background-color: rgba(0,0,0,0.35);
+  content: '';
+  position: absolute; inset: 0;
+  background-color: rgba(0,0,0,0.35); /* oscurece un poco para legibilidad */
 }
 .hero-content { position: relative; z-index: 1; max-width: 800px; padding: 0 1rem; }
 .hero-content h1 {
   font-family: 'Montserrat', sans-serif;
-  font-size: 2.5rem; margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 .hero-content p { font-size: 1.1rem; margin-bottom: 2rem; }
+
 .btn {
   background-color: var(--primary-color);
-  color: #fff; padding: .75rem 1.5rem; border: 0; border-radius: 6px;
-  text-decoration: none; font-weight: 700; cursor: pointer;
-  transition: background-color .2s ease;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 .btn:hover { background-color: var(--secondary-color); }
 
-/* ===== Secciones ===== */
+/* =========================
+   Secciones
+   ========================= */
 section {
   padding: 4rem 2rem;
   max-width: var(--max-width);
@@ -132,109 +157,220 @@ section h2 {
   color: var(--primary-color);
 }
 
-/* ===== Servicios ===== */
+/* Servicios */
 .services {
-  display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
 }
 .service {
-  flex: 1 1 220px; max-width: 260px; text-align: center;
-  background: #fff; border: 1px solid #e6e6e6; padding: 1rem; border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  flex: 1 1 220px;
+  max-width: 260px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
 }
 .service img {
-  width: 100%; height: 140px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
 .service h3 {
-  font-family: 'Montserrat', sans-serif; font-size: 1.15rem; margin:.25rem 0 .5rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.15rem;
+  margin: .25rem 0 .5rem;
   color: var(--secondary-color);
 }
 .service p { font-size: .95rem; line-height: 1.45; }
 
-/* ===== Galería ===== */
+/* Galería */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
 }
 .gallery img {
-  width: 100%; height: 200px; object-fit: cover; border-radius: 8px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
   transition: transform .2s ease;
-  border: 1px solid #e6e6e6; box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 .gallery img:hover { transform: scale(1.03); }
 
-/* ===== Testimonios ===== */
+/* Testimonios */
 .testimonials {
-  display: flex; flex-direction: column; gap: 1.25rem; max-width: 800px; margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 .testimonial {
-  background: #faf5ef; padding: 1.5rem; border-radius: 8px;
+  background-color: #faf5ef;
+  padding: 1.5rem;
+  border-radius: 8px;
   border-left: 4px solid var(--primary-color);
-  box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 .testimonial p { margin: 0; font-style: italic; }
 .testimonial span { display: block; margin-top: .75rem; font-weight: 700; color: var(--secondary-color); }
 
-/* ===== Why / Process ===== */
+/* Why Us / Process */
 .why-us {
-  display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
 }
 .why-item {
-  flex: 1 1 280px; max-width: 320px; background: #fff; border: 1px solid #e6e6e6;
-  padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,.05);
+  flex: 1 1 280px;
+  max-width: 320px;
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
-.why-item h3 { font-family:'Montserrat',sans-serif; font-size:1.15rem; margin:.25rem 0 .5rem; color: var(--secondary-color); }
+.why-item h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.15rem;
+  margin: .25rem 0 .5rem;
+  color: var(--secondary-color);
+}
 .why-item p { font-size: .95rem; line-height: 1.45; }
 
 .process { max-width: 800px; margin: 0 auto; padding-left: 1rem; counter-reset: step; }
 .process li { margin-bottom: 1rem; position: relative; padding-left: 2rem; }
 .process li::before {
-  counter-increment: step; content: counter(step);
+  counter-increment: step;
+  content: counter(step);
   position: absolute; left: 0; top: 0;
-  background: var(--primary-color); color: #fff; width: 1.5rem; height: 1.5rem;
-  line-height: 1.5rem; border-radius: 50%; text-align: center; font-size: .9rem;
+  background: var(--primary-color); color: #ffffff;
+  width: 1.5rem; height: 1.5rem; line-height: 1.5rem;
+  border-radius: 50%; text-align: center; font-size: .9rem;
 }
 
-/* ===== Social ===== */
+/* Social */
 #siguenos, #follow { text-align: center; }
 #siguenos a, #follow a { color: var(--primary-color); text-decoration: underline; margin: 0 .25rem; }
 #siguenos a:hover, #follow a:hover { color: var(--secondary-color); }
 
-/* ===== Contacto ===== */
+/* Contacto */
 #contacto form, #contact form {
-  display: flex; flex-direction: column; gap: 1rem; max-width: 600px; margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 #contacto input, #contacto textarea,
 #contact input, #contact textarea {
-  padding: .75rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem;
+  padding: .75rem;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 #contacto textarea, #contact textarea { resize: vertical; min-height: 120px; }
 #contacto .info, #contact .info { margin-top: 2rem; text-align: center; color: var(--secondary-color); }
 #contacto .info p, #contact .info p { margin: .3rem 0; }
 
-/* ===== Footer ===== */
+/* Footer */
 footer {
-  background: #111; color: #aaa; text-align: center; padding: 1.5rem 0; font-size: .9rem;
+  background-color: #111111;
+  color: #aaaaaa;
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: .9rem;
 }
 
-/* ===== Responsive ===== */
+/* =========================
+   Menú móvil: FAB + Drawer
+   ========================= */
+/* Botón flotante (solo móvil) */
+.fab{
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 140;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,.18);
+  display: none; /* se mostrará en mobile */
+}
+
+/* Drawer */
+.mobile-drawer{ position: fixed; inset: 0; z-index: 139; pointer-events: none; }
+.mobile-drawer .drawer-backdrop{
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.35);
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+.mobile-drawer .drawer-panel{
+  position: absolute; left: 0; right: 0; bottom: -100%;
+  background: #fff;
+  border-top-left-radius: 14px; border-top-right-radius: 14px;
+  padding: 1rem 1rem 1.25rem;
+  box-shadow: 0 -8px 30px rgba(0,0,0,.18);
+  transition: bottom .25s ease;
+}
+.mobile-drawer.open{ pointer-events: auto; }
+.mobile-drawer.open .drawer-backdrop{ opacity: 1; }
+.mobile-drawer.open .drawer-panel{ bottom: 0; }
+
+.drawer-close{
+  border: 0; background: transparent; font-size: 26px; line-height: 1; cursor: pointer;
+  position: absolute; right: 12px; top: 8px;
+}
+
+.drawer-links{
+  list-style: none; padding: 0; margin: .25rem 0 1rem 0;
+}
+.drawer-links li a{
+  display: block;
+  padding: .85rem .5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--dark-color);
+  font-weight: 600;
+}
+.drawer-links li a:hover{ background: #f6f2ea; }
+
+/* Reutiliza el pill de idioma */
+.drawer-lang{ display: flex; gap: 10px; }
+
+/* =========================
+   Responsive (≤ 768px)
+   ========================= */
 @media (max-width: 768px) {
+  /* navbar compacta; ocultamos el menú de la barra
+     y usamos el FAB + drawer para navegación */
   .navbar {
-    grid-template-columns: auto auto 1fr; /* logo | lang | hamburguesa a la derecha */
+    grid-template-columns: 1fr auto; /* logo | idioma */
   }
-  .menu-toggle { display: block; justify-self: end; }
 
-  .nav-links {
-    position: absolute; top: 56px; left: 0; right: 0;
-    background: #fff; border-bottom: 1px solid rgba(0,0,0,.08);
-    display: none; flex-direction: column; gap: 0; padding: .5rem 1rem 1rem; z-index: 120;
-  }
-  .nav-links.open { display: flex; }
+  .nav-links { display: none !important; }
+  .menu-toggle { display: none !important; } /* no lo usamos en móvil */
+  .lang-switch { justify-self: end; }
 
-  .nav-links li a {
-    display: block; padding: .75rem .25rem; border-radius: 6px;
-  }
-  .nav-links li a:hover { background: #f6f2ea; }
+  /* FAB visible en móvil */
+  .fab{ display: inline-flex; align-items: center; justify-content: center; }
 
-  .lang-switch { justify-self: center; }
+  /* hero puede ser un poco más bajo en móviles muy chicos si lo deseas */
+  .hero-content h1 { font-size: 2rem; }
 }
