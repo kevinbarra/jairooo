@@ -4,31 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jairo’s Flooring</title>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <!-- Main stylesheet -->
-    <!--
-      La hoja de estilos principal proporciona la apariencia profesional y
-      responsiva del sitio. Mantener los estilos en un archivo
-      separado permite una mejor organización y facilita la carga en
-      navegadores modernos.
-    -->
+
+    <!-- Hoja de estilos principal -->
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <!-- Navigation -->
+    <!-- Navbar -->
     <header>
       <nav class="navbar">
         <div class="logo">Jairo’s Flooring</div>
+
+        <!-- Botón hamburguesa (móvil) -->
+        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
+        <!-- Menú -->
         <ul class="nav-links">
           <li><a href="#home">Inicio</a></li>
           <li><a href="#servicios">Servicios</a></li>
@@ -38,64 +35,52 @@
           <li><a href="#testimonios">Testimonios</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
-      <!-- Language toggle integrated into the nav -->
-      <div class="language-toggle">
-        <span class="active-lang">ES</span>
-        <span>|</span>
-        <a href="index_en.html">EN</a>
-      </div>
-    </nav>
+
+        <!-- Selector de idioma -->
+        <div class="lang-switch" role="group" aria-label="Selector de idioma">
+          <a class="lang-btn active" href="index.html" aria-current="page">ES</a>
+          <a class="lang-btn" href="index_en.html" hreflang="en">EN</a>
+        </div>
+      </nav>
     </header>
 
-    <!-- Hero section -->
+    <!-- Hero -->
     <section id="home" class="hero">
       <div class="hero-content">
-        <h1>Jairo’s Flooring: Pisos &amp; Alfombras de Calidad en Seattle</h1>
+        <h1>Jairo’s Flooring: Pisos &amp; Alfombras de Calidad en Seattle</h1>
         <p>Calidad, pasión y experiencia en cada proyecto</p>
         <a href="#contacto" class="btn">Solicitar Cotización</a>
       </div>
     </section>
 
-    <!-- Services section -->
+    <!-- Servicios -->
     <section id="servicios">
       <h2>Nuestros Servicios</h2>
       <div class="services">
         <div class="service">
           <img src="images/wood.png" alt="Instalación de pisos de madera" />
           <h3>Pisos de Madera</h3>
-          <p>
-            Instalación y reparación de pisos de madera maciza y laminada con
-            acabados duraderos.
-          </p>
+          <p>Instalación y reparación de madera maciza y laminada con acabados duraderos.</p>
         </div>
         <div class="service">
           <img src="images/vinyl.png" alt="Instalación de pisos vinílicos" />
           <h3>Pisos Vinílicos</h3>
-          <p>
-            Amplia variedad de estilos en vinil y laminado para espacios
-            resistentes al agua.
-          </p>
+          <p>Variedad de estilos en vinil y laminado para espacios resistentes al agua.</p>
         </div>
         <div class="service">
-          <img src="images/tile.png" alt="Instalación de baldosas" />
+          <img src="images/tile.png" alt="Instalación de baldosas y azulejos" />
           <h3>Baldosas y Azulejos</h3>
-          <p>
-            Diseño e instalación de pisos de baldosa para cocinas, baños y
-            superficies de alto tránsito.
-          </p>
+          <p>Diseño e instalación para cocinas, baños y superficies de alto tránsito.</p>
         </div>
         <div class="service">
           <img src="images/carpet.png" alt="Instalación de alfombras" />
           <h3>Alfombras</h3>
-          <p>
-            Instalación de alfombras suaves y duraderas que añaden confort a
-            cualquier habitación.
-          </p>
+          <p>Alfombras suaves y duraderas que añaden confort y mejoran la acústica.</p>
         </div>
       </div>
     </section>
 
-    <!-- Gallery section -->
+    <!-- Galería -->
     <section id="galeria">
       <h2>Galería de Proyectos</h2>
       <div class="gallery">
@@ -106,145 +91,97 @@
       </div>
     </section>
 
-    <!-- Testimonials section -->
-    <section id="testimonios">
-      <h2>Testimonios</h2>
-      <div class="testimonials">
-        <div class="testimonial">
-          <p>
-            “Hicieron un trabajo excepcional. El piso de nuestra sala quedó
-            hermoso y el servicio fue impecable.”
-          </p>
-          <span>- Kevin R., Seattle</span>
-        </div>
-        <div class="testimonial">
-          <p>
-            “Profesionales y responsables. Transformaron completamente el
-            aspecto de nuestra oficina con nuevos pisos vinílicos.”
-          </p>
-          <span>- Rafa G., Bellevue</span>
-        </div>
-        <div class="testimonial">
-          <p>
-            “Nos ayudaron a elegir la mejor alfombra para nuestro hogar y
-            resultó perfecta. ¡Totalmente recomendados!”
-          </p>
-          <span>- Isabella P., Tacoma</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why us section -->
+    <!-- ¿Por qué nosotros? -->
     <section id="por-que">
       <h2>¿Por qué elegir Jairo’s Flooring?</h2>
       <div class="why-us">
         <div class="why-item">
           <h3>Experiencia local</h3>
-          <p>
-            Con años de trabajo en Seattle y el área del Noroeste, conocemos las
-            necesidades del clima húmedo. Seleccionamos materiales como vinil
-            impermeable y madera de ingeniería que resisten la humedad y se
-            adaptan a tu estilo.
-          </p>
+          <p>Con años de trabajo en Seattle y el Noroeste, recomendamos materiales que resisten la humedad.</p>
         </div>
         <div class="why-item">
           <h3>Calidad y garantía</h3>
-          <p>
-            Utilizamos materiales de alta calidad que combinan belleza y
-            durabilidad. Nuestras instalaciones están avaladas por licencia y
-            seguro, y ofrecemos garantías para tu tranquilidad.
-          </p>
+          <p>Materiales de alta calidad, licencia y seguro. Ofrecemos garantía para tu tranquilidad.</p>
         </div>
         <div class="why-item">
           <h3>Atención personalizada</h3>
-          <p>
-            Escuchamos tus ideas y necesidades para ofrecer soluciones hechas a
-            tu medida. Ofrecemos asesoría, medición y presupuesto gratuitos sin
-            compromiso.
-          </p>
+          <p>Asesoría, medición y presupuesto gratuitos para soluciones a tu medida.</p>
         </div>
       </div>
     </section>
 
-    <!-- Process section -->
+    <!-- Proceso -->
     <section id="proceso">
       <h2>Nuestro Proceso</h2>
       <ol class="process">
-        <li>
-          <strong>Consulta gratuita:</strong> Conversamos contigo para conocer tus
-          gustos, necesidades y presupuesto.
-        </li>
-        <li>
-          <strong>Visita y medición:</strong> Agendamos una visita para tomar
-          medidas precisas y mostrarte muestras de materiales.
-        </li>
-        <li>
-          <strong>Presupuesto detallado:</strong> Te enviamos una propuesta
-          clara y transparente con todas las opciones disponibles.
-        </li>
-        <li>
-          <strong>Instalación profesional:</strong> Nuestro equipo instala tu
-          piso con cuidado y limpieza, respetando tu hogar.
-        </li>
-        <li>
-          <strong>Revisión y garantía:</strong> Revisamos que todo esté
-          perfecto y te damos recomendaciones de mantenimiento.
-        </li>
+        <li><strong>Consulta gratuita:</strong> Conocemos tus gustos, necesidades y presupuesto.</li>
+        <li><strong>Visita y medición:</strong> Tomamos medidas y te mostramos muestras.</li>
+        <li><strong>Presupuesto:</strong> Propuesta clara con opciones.</li>
+        <li><strong>Instalación profesional:</strong> Cuidado y limpieza, respetando tu hogar.</li>
+        <li><strong>Revisión y garantía:</strong> Recomendaciones de mantenimiento.</li>
       </ol>
     </section>
 
-    <!-- Social section -->
+    <!-- Testimonios -->
+    <section id="testimonios">
+      <h2>Testimonios</h2>
+      <div class="testimonials">
+        <div class="testimonial">
+          <p>“Trabajo excepcional. El piso de nuestra sala quedó hermoso y el servicio fue impecable.”</p>
+          <span>- Kevin R., Seattle</span>
+        </div>
+        <div class="testimonial">
+          <p>“Profesionales y responsables. Transformaron nuestra oficina con nuevos pisos vinílicos.”</p>
+          <span>- Rafa G., Bellevue</span>
+        </div>
+        <div class="testimonial">
+          <p>“Nos ayudaron a elegir la mejor alfombra para nuestro hogar. ¡Totalmente recomendados!”</p>
+          <span>- Isabella P., Tacoma</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Síguenos -->
     <section id="siguenos">
       <h2>Síguenos</h2>
       <p>
-        Conoce más de nuestro trabajo y descubre inspiración en nuestras redes
-        sociales. Síguenos en
-        <a href="#" target="_blank">Instagram</a> y
-        <a href="#" target="_blank">Facebook</a> para ver proyectos
-        recientes y consejos de mantenimiento.
+        Conoce más de nuestro trabajo y encuentra inspiración en nuestras redes.
+        Síguenos en <a href="#" target="_blank" rel="noopener">Instagram</a> y
+        <a href="#" target="_blank" rel="noopener">Facebook</a>.
       </p>
     </section>
 
-    <!-- Contact section -->
+    <!-- Contacto -->
     <section id="contacto">
       <h2>Contacto</h2>
       <p>¿Listo para transformar tus espacios?</p>
       <form action="#" method="post">
-        <input
-          type="text"
-          name="nombre"
-          placeholder="Tu nombre"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Tu correo electrónico"
-          required
-        />
-        <input
-          type="tel"
-          name="telefono"
-          placeholder="Tu teléfono"
-          required
-        />
-        <textarea
-          name="mensaje"
-          placeholder="Cuéntanos sobre tu proyecto"
-          required
-        ></textarea>
+        <input type="text" name="nombre" placeholder="Tu nombre" required />
+        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <input type="tel" name="telefono" placeholder="Tu teléfono" required />
+        <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
         <button type="submit" class="btn">Enviar Mensaje</button>
       </form>
       <div class="info">
         <p><strong>Ubicación:</strong> Seattle, WA</p>
-        <p><strong>Teléfono:</strong> (206) 123‑4567</p>
+        <p><strong>Teléfono:</strong> (206) 123-4567</p>
         <p><strong>Email:</strong> info@jairosflooring.com</p>
       </div>
     </section>
 
     <!-- Footer -->
     <footer>
-      <p>&copy; 2025 Jairo’s Flooring. Todos los derechos reservados.</p>
+      <p>&copy; 2025 Jairo’s Flooring. Todos los derechos reservados.</p>
     </footer>
+
+    <!-- JS para menú móvil -->
+    <script>
+      const btn = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-links');
+      btn?.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    </script>
   </body>
 </html>
