@@ -1,0 +1,9 @@
+{
+  "name": "jairos-flooring-site",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "twilio": "^4.21.0"
+  }
+}
