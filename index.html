@@ -22,10 +22,7 @@
       <nav class="navbar">
         <div class="logo">Jairo’s Flooring</div>
 
-        <!-- Botón hamburguesa (navbar, se oculta en móvil si usamos solo FAB) -->
-        <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
-
-        <!-- Menú (se oculta en móvil; en móvil usamos el drawer) -->
+        <!-- Menú (centrado en desktop; oculto en móvil, usamos drawer) -->
         <ul class="nav-links">
           <li><a href="#home">Inicio</a></li>
           <li><a href="#servicios">Servicios</a></li>
@@ -151,17 +148,20 @@
       </p>
     </section>
 
-    <!-- Contacto -->
+    <!-- Contacto (conexión a /api/send-sms) -->
     <section id="contacto">
       <h2>Contacto</h2>
       <p>¿Listo para transformar tus espacios?</p>
-      <form action="#" method="post">
+
+      <form id="contactForm">
         <input type="text" name="nombre" placeholder="Tu nombre" required />
         <input type="email" name="email" placeholder="Tu correo electrónico" required />
         <input type="tel" name="telefono" placeholder="Tu teléfono" required />
         <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
         <button type="submit" class="btn">Enviar Mensaje</button>
+        <p id="formStatus" class="form-status" aria-live="polite"></p>
       </form>
+
       <div class="info">
         <p><strong>Ubicación:</strong> Seattle, WA</p>
         <p><strong>Teléfono:</strong> (206) 123-4567</p>
@@ -197,29 +197,50 @@
       </nav>
     </div>
 
-    <!-- JS: navbar toggle (desktop) + FAB/Drawer (móvil) -->
+    <!-- JS: Drawer + envío SMS -->
     <script>
-      // Navbar (solo si mantienes menu-toggle en desktop/tablet)
-      const navBtn = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      navBtn?.addEventListener('click', () => {
-        const open = navLinks.classList.toggle('open');
-        navBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-
       // Drawer móvil
       const fab = document.querySelector('.fab');
       const drawer = document.getElementById('mobile-drawer');
       const closeBtn = drawer?.querySelector('.drawer-close');
       const backdrop = drawer?.querySelector('.drawer-backdrop');
-
       function openDrawer(){ drawer?.classList.add('open'); fab?.setAttribute('aria-expanded','true'); }
       function closeDrawer(){ drawer?.classList.remove('open'); fab?.setAttribute('aria-expanded','false'); }
-
       fab?.addEventListener('click', openDrawer);
       closeBtn?.addEventListener('click', closeDrawer);
       backdrop?.addEventListener('click', closeDrawer);
       drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+
+      // Envío del formulario a /api/send-sms (SMS)
+      const form = document.getElementById('contactForm');
+      const statusEl = document.getElementById('formStatus');
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        statusEl.textContent = 'Enviando...';
+        const data = {
+          name: form.nombre.value,
+          email: form.email.value,
+          phone: form.telefono.value,
+          message: form.mensaje.value,
+          lang: 'es'
+        };
+        try {
+          const res = await fetch('/api/send-sms', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          const out = await res.json();
+          if (res.ok && out.ok) {
+            statusEl.textContent = '¡Gracias! Te contactaremos pronto.';
+            form.reset();
+          } else {
+            statusEl.textContent = 'Hubo un problema al enviar. Intenta más tarde.';
+          }
+        } catch (err) {
+          statusEl.textContent = 'Error de red. Intenta más tarde.';
+        }
+      });
     </script>
   </body>
 </html>
