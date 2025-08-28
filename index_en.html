@@ -4,228 +4,184 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jairo’s Flooring</title>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
+
     <!-- Main stylesheet -->
-    <!--
-      The main stylesheet provides the professional and responsive look of the site. 
-      Keeping styles in a separate file improves organization and ensures proper loading 
-      in modern browsers.
-    -->
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
-    <!-- Navigation -->
+    <!-- Navbar -->
     <header>
       <nav class="navbar">
         <div class="logo">Jairo’s Flooring</div>
+
+        <!-- Hamburger (mobile) -->
+        <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
+        <!-- Menu -->
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
-          <li><a href="#servicios">Services</a></li>
-          <li><a href="#galeria">Gallery</a></li>
-          <li><a href="#por-que">Why Us?</a></li>
-          <li><a href="#proceso">Process</a></li>
-          <li><a href="#testimonios">Testimonials</a></li>
-          <li><a href="#contacto">Contact</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#why">Why Us?</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
-      <!-- Language toggle integrated into the nav -->
-      <div class="language-toggle">
-        <a href="index.html">ES</a>
-        <span>|</span>
-        <span class="active-lang">EN</span>
-      </div>
-    </nav>
+
+        <!-- Language switch -->
+        <div class="lang-switch" role="group" aria-label="Language switch">
+          <a class="lang-btn" href="index.html" hreflang="es">ES</a>
+          <a class="lang-btn active" href="index_en.html" aria-current="page">EN</a>
+        </div>
+      </nav>
     </header>
 
-    <!-- Hero section -->
+    <!-- Hero -->
     <section id="home" class="hero">
       <div class="hero-content">
-        <h1>Jairo’s Flooring: Quality Flooring &amp; Carpets in Seattle</h1>
+        <h1>Jairo’s Flooring: Quality Flooring &amp; Carpets in Seattle</h1>
         <p>Quality, passion and experience in every project</p>
-        <a href="#contacto" class="btn">Get a Quote</a>
+        <a href="#contact" class="btn">Get a Quote</a>
       </div>
     </section>
 
-    <!-- Services section -->
-    <section id="servicios">
+    <!-- Services -->
+    <section id="services">
       <h2>Our Services</h2>
       <div class="services">
         <div class="service">
           <img src="images/wood.png" alt="Wood flooring installation" />
-          <h3>Wood Flooring</h3>
-          <p>
-            Installation and repair of solid wood and laminate floors with durable finishes.
-          </p>
+          <h3>Hardwood</h3>
+          <p>Solid and engineered wood installation and repairs with durable finishes.</p>
         </div>
         <div class="service">
           <img src="images/vinyl.png" alt="Vinyl flooring installation" />
-          <h3>Vinyl Flooring</h3>
-          <p>
-            Wide variety of vinyl and laminate styles for water‑resistant spaces.
-          </p>
+          <h3>Vinyl &amp; Laminate</h3>
+          <p>Water-resistant options that combine style and durability for busy areas.</p>
         </div>
         <div class="service">
           <img src="images/tile.png" alt="Tile installation" />
-          <h3>Tiles</h3>
-          <p>
-            Design and installation of tile floors for kitchens, bathrooms and high‑traffic surfaces.
-          </p>
+          <h3>Tile</h3>
+          <p>Kitchen and bath tile installation for high-traffic and wet areas.</p>
         </div>
         <div class="service">
           <img src="images/carpet.png" alt="Carpet installation" />
           <h3>Carpet</h3>
-          <p>
-            Installation of soft and durable carpets that add comfort to any room.
-          </p>
+          <p>Soft, long-lasting carpets that add comfort and improve acoustics.</p>
         </div>
       </div>
     </section>
 
-    <!-- Gallery section -->
-    <section id="galeria">
+    <!-- Gallery -->
+    <section id="gallery">
       <h2>Project Gallery</h2>
       <div class="gallery">
-        <img src="images/wood.png" alt="Wood flooring project" />
+        <img src="images/wood.png" alt="Hardwood flooring project" />
         <img src="images/vinyl.png" alt="Vinyl flooring project" />
         <img src="images/tile.png" alt="Tile project" />
         <img src="images/carpet.png" alt="Carpet project" />
       </div>
     </section>
 
-    <!-- Testimonials section -->
-    <section id="testimonios">
+    <!-- Why us -->
+    <section id="why">
+      <h2>Why Choose Jairo’s Flooring?</h2>
+      <div class="why-us">
+        <div class="why-item">
+          <h3>Local Expertise</h3>
+          <p>Years of experience in Seattle and the Pacific Northwest. Materials that handle humidity.</p>
+        </div>
+        <div class="why-item">
+          <h3>Quality &amp; Warranty</h3>
+          <p>Top-quality materials, licensed and insured installations, and solid guarantees.</p>
+        </div>
+        <div class="why-item">
+          <h3>Personalized Service</h3>
+          <p>Free advice, measuring, and quotes to deliver solutions tailored to you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process">
+      <h2>Our Process</h2>
+      <ol class="process">
+        <li><strong>Free consultation:</strong> We learn your style, needs, and budget.</li>
+        <li><strong>Visit &amp; measuring:</strong> Accurate measurements and material samples.</li>
+        <li><strong>Detailed estimate:</strong> Clear proposal with options.</li>
+        <li><strong>Professional installation:</strong> Clean, careful work at your home or office.</li>
+        <li><strong>Review &amp; warranty:</strong> We verify everything and provide care tips.</li>
+      </ol>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
       <h2>Testimonials</h2>
       <div class="testimonials">
         <div class="testimonial">
-          <p>
-            “They did an exceptional job. Our living room floor turned out
-            beautiful and the service was impeccable.”
-          </p>
+          <p>“Outstanding work. Our living room floor looks amazing and the service was impeccable.”</p>
           <span>- Kevin R., Seattle</span>
         </div>
         <div class="testimonial">
-          <p>
-            “Professional and reliable. They completely transformed the look
-            of our office with new vinyl floors.”
-          </p>
+          <p>“Professional and reliable. They transformed our office with new vinyl floors.”</p>
           <span>- Rafa G., Bellevue</span>
         </div>
         <div class="testimonial">
-          <p>
-            “They helped us choose the best carpet for our home and it
-            turned out perfect. Totally recommended!”
-          </p>
+          <p>“They helped us choose the perfect carpet for our home. Highly recommended!”</p>
           <span>- Isabella P., Tacoma</span>
         </div>
       </div>
     </section>
 
-    <!-- Why us section -->
-    <section id="por-que">
-      <h2>Why Choose Jairo’s Flooring?</h2>
-      <div class="why-us">
-        <div class="why-item">
-          <h3>Local Experience</h3>
-          <p>
-            With years of work in Seattle and the Northwest area, we understand the needs of the humid climate. We select materials like waterproof vinyl and engineered wood that withstand moisture and suit your style.
-          </p>
-        </div>
-        <div class="why-item">
-          <h3>Quality &amp; Warranty</h3>
-          <p>
-            We use high‑quality materials that combine beauty and durability. Our installations are backed by license and insurance, and we offer warranties for your peace of mind.
-          </p>
-        </div>
-        <div class="why-item">
-          <h3>Personalized Attention</h3>
-          <p>
-            We listen to your ideas and needs to offer solutions tailored to you. We provide free advice, measurement and a no‑obligation estimate.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Process section -->
-    <section id="proceso">
-      <h2>Our Process</h2>
-      <ol class="process">
-        <li>
-          <strong>Free Consultation:</strong> We talk with you to understand your tastes, needs and budget.
-        </li>
-        <li>
-          <strong>Visit &amp; Measurement:</strong> We schedule a visit to take precise measurements and show you material samples.
-        </li>
-        <li>
-          <strong>Detailed Estimate:</strong> We send you a clear, transparent proposal with all available options.
-        </li>
-        <li>
-          <strong>Professional Installation:</strong> Our team installs your floor with care and cleanliness, respecting your home.
-        </li>
-        <li>
-          <strong>Review &amp; Warranty:</strong> We check that everything is perfect and give you maintenance recommendations.
-        </li>
-      </ol>
-    </section>
-
-    <!-- Social section -->
-    <section id="siguenos">
+    <!-- Follow us -->
+    <section id="follow">
       <h2>Follow Us</h2>
       <p>
-        Learn more about our work and discover inspiration on our social networks. Follow us on
-        <a href="#" target="_blank">Instagram</a> and
-        <a href="#" target="_blank">Facebook</a> to see recent projects and maintenance tips.
+        See more of our work and get inspired on our social media.
+        Follow us on <a href="#" target="_blank" rel="noopener">Instagram</a> and
+        <a href="#" target="_blank" rel="noopener">Facebook</a>.
       </p>
     </section>
 
-    <!-- Contact section -->
-    <section id="contacto">
-      <h2>Contact Us</h2>
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
       <p>Ready to transform your spaces?</p>
       <form action="#" method="post">
-        <input
-          type="text"
-          name="name"
-          placeholder="Your name"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your email"
-          required
-        />
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Your phone"
-          required
-        />
-        <textarea
-          name="message"
-          placeholder="Tell us about your project"
-          required
-        ></textarea>
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <input type="tel" name="phone" placeholder="Your phone" required />
+        <textarea name="message" placeholder="Tell us about your project" required></textarea>
         <button type="submit" class="btn">Send Message</button>
       </form>
       <div class="info">
         <p><strong>Location:</strong> Seattle, WA</p>
-        <p><strong>Phone:</strong> (206) 123‑4567</p>
+        <p><strong>Phone:</strong> (206) 123-4567</p>
         <p><strong>Email:</strong> info@jairosflooring.com</p>
       </div>
     </section>
 
     <!-- Footer -->
     <footer>
-      <p>&copy; 2025 Jairo’s Flooring. All rights reserved.</p>
+      <p>&copy; 2025 Jairo’s Flooring. All rights reserved.</p>
     </footer>
+
+    <!-- JS for mobile menu -->
+    <script>
+      const btn = document.querySelector('.menu-toggle');
+      const nav = document.querySelector('.nav-links');
+      btn?.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    </script>
   </body>
 </html>
