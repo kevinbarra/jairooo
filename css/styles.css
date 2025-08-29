@@ -7,6 +7,9 @@
   --light-color: #f7f4ed;
   --dark-color: #333333;
   --max-width: 1200px;
+
+  /* A11y */
+  --focus-ring: 0 0 0 3px rgba(138,104,66,.25), 0 0 0 6px rgba(138,104,66,.15);
 }
 
 /* ===== Base ===== */
@@ -58,9 +61,12 @@ body {
   text-decoration: none;
   color: var(--dark-color);
   font-weight: 600;
-  transition: color .2s ease;
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+  transition: color .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
-.nav-links a:hover { color: var(--primary-color); }
+.nav-links a:hover { color: var(--primary-color); border-color: var(--primary-color); }
+.nav-links a:focus-visible { outline: none; box-shadow: var(--focus-ring); border-color: var(--primary-color); }
 
 /* Selector de idioma (pill) */
 .lang-switch {
@@ -80,9 +86,11 @@ body {
   display: inline-flex;
   align-items: center;
   line-height: 1;
+  transition: background .2s ease, color .2s ease, box-shadow .2s ease;
 }
 .lang-btn + .lang-btn { border-left: 1px solid #e6e6e6; }
 .lang-btn:hover { background: #f6f2ea; }
+.lang-btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 .lang-btn.active { background: var(--primary-color); color: #fff; font-weight: 700; }
 
 /* =========================
@@ -126,9 +134,10 @@ body {
   border-radius: 6px;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color .2s ease;
+  transition: background-color .2s ease, box-shadow .2s ease, transform .06s ease;
 }
 .btn:hover { background: var(--secondary-color); }
+.btn:focus-visible { outline: none; box-shadow: var(--focus-ring); transform: translateY(-1px); }
 
 /* =========================
    Secciones
