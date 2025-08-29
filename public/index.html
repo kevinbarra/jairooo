@@ -55,37 +55,61 @@
       <h2>Nuestros Servicios</h2>
       <div class="services">
         <div class="service">
-          <img src="images/wood.png" alt="Instalación de pisos de madera" />
+          <img src="images/wood.png" alt="Instalación de pisos de madera" loading="lazy" />
           <h3>Pisos de Madera</h3>
           <p>Instalación y reparación de madera maciza y laminada con acabados duraderos.</p>
         </div>
         <div class="service">
-          <img src="images/vinyl.png" alt="Instalación de pisos vinílicos" />
+          <img src="images/vinyl.png" alt="Instalación de pisos vinílicos" loading="lazy" />
           <h3>Pisos Vinílicos</h3>
           <p>Variedad de estilos en vinil y laminado para espacios resistentes al agua.</p>
         </div>
         <div class="service">
-          <img src="images/tile.png" alt="Instalación de baldosas y azulejos" />
+          <img src="images/tile.png" alt="Instalación de baldosas y azulejos" loading="lazy" />
           <h3>Baldosas y Azulejos</h3>
           <p>Diseño e instalación para cocinas, baños y superficies de alto tránsito.</p>
         </div>
         <div class="service">
-          <img src="images/carpet.png" alt="Instalación de alfombras" />
+          <img src="images/carpet.png" alt="Instalación de alfombras" loading="lazy" />
           <h3>Alfombras</h3>
           <p>Alfombras suaves y duraderas que añaden confort y mejoran la acústica.</p>
         </div>
       </div>
     </section>
 
-    <!-- Galería -->
-    <section id="galeria">
+    <!-- Galería - CARRUSEL HÍBRIDO -->
+    <section id="galeria" aria-label="Galería de Proyectos">
       <h2>Galería de Proyectos</h2>
-      <div class="gallery">
-        <img src="images/wood.png" alt="Proyecto de piso de madera" />
-        <img src="images/vinyl.png" alt="Proyecto de piso vinílico" />
-        <img src="images/tile.png" alt="Proyecto de baldosa" />
-        <img src="images/carpet.png" alt="Proyecto de alfombra" />
+
+      <!-- Wrapper general -->
+      <div class="carousel" data-autoloop aria-live="off">
+        <!-- Pista (se clona automáticamente en desktop para loop infinito) -->
+        <ul class="carousel-track" id="galleryTrack">
+          <!-- === AÑADE AQUÍ MÁS <li class="slide"> CON TUS FOTOS === -->
+          <li class="slide">
+            <figure class="tile">
+              <img src="images/wood.png" alt="Proyecto de piso de madera color nogal" loading="lazy" />
+            </figure>
+          </li>
+          <li class="slide">
+            <figure class="tile">
+              <img src="images/vinyl.png" alt="Proyecto de piso vinílico gris" loading="lazy" />
+            </figure>
+          </li>
+          <li class="slide">
+            <figure class="tile">
+              <img src="images/tile.png" alt="Instalación de baldosa gris en cocina" loading="lazy" />
+            </figure>
+          </li>
+          <li class="slide">
+            <figure class="tile">
+              <img src="images/carpet.png" alt="Alfombra beige instalada en sala" loading="lazy" />
+            </figure>
+          </li>
+        </ul>
       </div>
+
+      <p class="hint">En móvil, desliza para ver más.</p>
     </section>
 
     <!-- ¿Por qué nosotros? -->
@@ -148,7 +172,7 @@
       </p>
     </section>
 
-    <!-- Contacto (conexión a /api/send-sms) -->
+    <!-- Contacto -->
     <section id="contacto">
       <h2>Contacto</h2>
       <p>¿Listo para transformar tus espacios?</p>
@@ -197,7 +221,7 @@
       </nav>
     </div>
 
-    <!-- JS: Drawer + envío SMS -->
+    <!-- JS: Drawer + envío EMAIL + Carrusel -->
     <script>
       // Drawer móvil
       const fab = document.querySelector('.fab');
@@ -211,7 +235,7 @@
       backdrop?.addEventListener('click', closeDrawer);
       drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 
-      // Envío del formulario a /api/send-sms (SMS)
+      // Envío del formulario a /api/send-sms (EMAIL via Resend)
       const form = document.getElementById('contactForm');
       const statusEl = document.getElementById('formStatus');
       form?.addEventListener('submit', async (e) => {
@@ -241,6 +265,32 @@
           statusEl.textContent = 'Error de red. Intenta más tarde.';
         }
       });
+
+      // ===== Carrusel: clonado dinámico para loop (solo desktop) =====
+      const track = document.getElementById('galleryTrack');
+      const mqDesktop = window.matchMedia('(min-width: 1024px)');
+      function setupCarousel(){
+        // Limpia clones previos
+        track.querySelectorAll('.clone').forEach(n=>n.remove());
+        if (mqDesktop.matches) {
+          // Duplica los slides para loop continuo
+          const slides = Array.from(track.children);
+          slides.forEach(s => {
+            const c = s.cloneNode(true);
+            c.classList.add('clone');
+            track.appendChild(c);
+          });
+          track.setAttribute('data-loop','true');
+        } else {
+          track.removeAttribute('data-loop');
+        }
+      }
+      setupCarousel();
+      mqDesktop.addEventListener?.('change', setupCarousel);
+
+      // Pausa animación al focusear con teclado (accesibilidad)
+      track?.addEventListener('focusin', () => track.classList.add('pause'));
+      track?.addEventListener('focusout', () => track.classList.remove('pause'));
     </script>
   </body>
 </html>
