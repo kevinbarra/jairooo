@@ -1,17 +1,16 @@
 // api/send-sms.js
+// Vercel Serverless Function (Node.js, ESM)
+// Requiere ENV: TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM, SMS_TO
+// Opcional: SITE_ORIGIN (p.ej. https://jairos-flooring.vercel.app)
+
 import twilio from "twilio";
 
-/**
- * Función Serverless para Vercel.
- * Recibe JSON: { name, email, phone, message, lang }
- * Envía un SMS a process.env.SMS_TO usando Twilio.
- */
-
-const ALLOWED_ORIGINS = ["*"]; // Puedes poner tu dominio: ["https://tu-dominio.vercel.app"]
+const ALLOWED_ORIGIN = process.env.SITE_ORIGIN || "*";
 
 export default async function handler(req, res) {
-  // CORS básico
-  res.setHeader("Access-Control-Allow-Origin", ALLOWED_ORIGINS[0]);
+  // CORS básico / preflight
+  res.setHeader("Access-Control-Allow-Origin", ALLOWED_ORIGIN);
+  res.setHeader("Vary", "Origin");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   if (req.method === "OPTIONS") return res.status(200).end();
@@ -28,16 +27,10 @@ export default async function handler(req, res) {
       return res.status(400).json({ ok: false, error: "Missing fields" });
     }
 
-    // Construimos el texto
-    const text =
-      (lang === "en"
-        ? `New lead from website:\nName: ${name}\nEmail: ${email}\nPhone: ${phone || "-"}\nMessage: ${message}`
-        : `Nuevo lead del sitio:\nNombre: ${name}\nEmail: ${email}\nTel: ${phone || "-"}\nMensaje: ${message}`);
-
     const accountSid = process.env.TWILIO_ACCOUNT_SID;
     const authToken  = process.env.TWILIO_AUTH_TOKEN;
-    const fromNumber = process.env.TWILIO_FROM; // por ej. +12065550123 (número de Twilio)
-    const toNumber   = process.env.SMS_TO;      // por ej. +1206XXXXXXX (número de tu familiar)
+    const fromNumber = process.env.TWILIO_FROM; // +12065550123 (Twilio)
+    const toNumber   = process.env.SMS_TO;      // +1206XXXXXXX (familiar)
 
     if (!accountSid || !authToken || !fromNumber || !toNumber) {
       return res.status(500).json({ ok: false, error: "Missing Twilio env vars" });
@@ -45,10 +38,20 @@ export default async function handler(req, res) {
 
     const client = twilio(accountSid, authToken);
 
+    // Mensaje compacto; máx ~1600 chars por seguridad
+    const header = lang === "en" ? "New lead from website" : "Nuevo lead del sitio";
+    const text = [
+      `${header}: Jairo's Flooring`,
+      `Name/Nombre: ${name}`,
+      `Email: ${email}`,
+      `Phone/Tel: ${phone || "-"}`,
+      `Message/Mensaje: ${message}`
+    ].join(" | ").slice(0, 1600);
+
     await client.messages.create({
       from: fromNumber,
       to: toNumber,
-      body: text.slice(0, 1600), // límite seguro
+      body: text,
     });
 
     return res.status(200).json({ ok: true });
