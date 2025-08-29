@@ -1,314 +1,192 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jairo’s Flooring</title>
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Hoja de estilos principal -->
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
-    <!-- Navbar -->
-    <header>
-      <nav class="navbar">
-        <div class="logo">Jairo’s Flooring</div>
-
-        <!-- Menú (centrado en desktop; oculto en móvil, usamos drawer) -->
-        <ul class="nav-links">
-          <li><a href="#home">Inicio</a></li>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#galeria">Galería</a></li>
-          <li><a href="#por-que">¿Por qué nosotros?</a></li>
-          <li><a href="#proceso">Proceso</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-
-        <!-- Selector de idioma -->
-        <div class="lang-switch" role="group" aria-label="Selector de idioma">
-          <a class="lang-btn active" href="index.html" aria-current="page">ES</a>
-          <a class="lang-btn" href="index_en.html" hreflang="en">EN</a>
-        </div>
-      </nav>
-    </header>
-
-    <!-- Hero (restaurado a wood.png) -->
-    <section id="home" class="hero" style="background-image:url('images/wood.png')">
-      <div class="hero-content">
-        <h1>Jairo’s Flooring: Pisos &amp; Alfombras de Calidad en Seattle</h1>
-        <p>Calidad, pasión y experiencia en cada proyecto</p>
-        <a href="#contacto" class="btn">Solicitar Cotización</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jairo’s Flooring</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">Jairo’s Flooring</div>
+      <ul class="nav-links">
+        <li><a href="#home">Inicio</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#galeria">Galería</a></li>
+        <li><a href="#por-que">¿Por qué nosotros?</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#testimonios">Testimonios</a></li><li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="lang-switch" role="group" aria-label="Selector de idioma">
+        <a class="lang-btn active" href="index.html" aria-current="page">ES</a>
+        <a class="lang-btn" href="index_en.html" hreflang="en">EN</a>
       </div>
-    </section>
+    </nav>
+  </header>
 
-    <!-- Servicios (restaurados a *.png) -->
-    <section id="servicios">
-      <h2>Nuestros Servicios</h2>
-      <div class="services">
-        <div class="service">
-          <img src="images/wood.png" alt="Instalación de pisos de madera" loading="lazy" />
-          <h3>Pisos de Madera</h3>
-          <p>Instalación y reparación de madera maciza y laminada con acabados duraderos.</p>
-        </div>
-        <div class="service">
-          <img src="images/vinyl.png" alt="Instalación de pisos vinílicos" loading="lazy" />
-          <h3>Pisos Vinílicos</h3>
-          <p>Variedad de estilos en vinil y laminado para espacios resistentes al agua.</p>
-        </div>
-        <div class="service">
-          <img src="images/tile.png" alt="Instalación de baldosas y azulejos" loading="lazy" />
-          <h3>Baldosas y Azulejos</h3>
-          <p>Diseño e instalación para cocinas, baños y superficies de alto tránsito.</p>
-        </div>
-        <div class="service">
-          <img src="images/carpet.png" alt="Instalación de alfombras" loading="lazy" />
-          <h3>Alfombras</h3>
-          <p>Alfombras suaves y duraderas que añaden confort y mejoran la acústica.</p>
-        </div>
-      </div>
-    </section>
+  <section id="home" class="hero" style="background-image:url('images/wood.png')">
+    <div class="hero-content">
+      <h1>Jairo’s Flooring: Pisos &amp; Alfombras de Calidad en Seattle</h1>
+      <p>Calidad, pasión y experiencia en cada proyecto</p>
+      <a href="#contacto" class="btn">Solicitar Cotización</a>
+    </div>
+  </section>
 
-    <!-- Galería - Carrusel con botones -->
-    <section id="galeria" aria-label="Galería de Proyectos">
-      <h2>Galería de Proyectos</h2>
+  <section id="servicios">
+    <h2>Nuestros Servicios</h2>
+    <div class="services">
+      <div class="service"><img src="images/wood.png" alt="Instalación de pisos de madera" loading="lazy" /><h3>Pisos de Madera</h3><p>Instalación y reparación de madera maciza y laminada con acabados duraderos.</p></div>
+      <div class="service"><img src="images/vinyl.png" alt="Instalación de pisos vinílicos" loading="lazy" /><h3>Pisos Vinílicos</h3><p>Variedad de estilos en vinil y laminado para espacios resistentes al agua.</p></div>
+      <div class="service"><img src="images/tile.png" alt="Instalación de baldosas y azulejos" loading="lazy" /><h3>Baldosas y Azulejos</h3><p>Diseño e instalación para cocinas, baños y superficies de alto tránsito.</p></div>
+      <div class="service"><img src="images/carpet.png" alt="Instalación de alfombras" loading="lazy" /><h3>Alfombras</h3><p>Alfombras suaves y duraderas que añaden confort y mejoran la acústica.</p></div>
+    </div>
+  </section>
 
-      <div class="carousel" data-autoloop aria-live="off">
-        <button class="carousel-btn prev" aria-label="Ver anterior" title="Anterior">‹</button>
-        <ul class="carousel-track" id="galleryTrack">
-          <!-- Solo f1.jpg … f9.jpg -->
-          <li class="slide"><figure class="tile"><img src="images/f1.jpg" alt="Proyecto de piso f1" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f2.jpg" alt="Proyecto de piso f2" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f3.jpg" alt="Proyecto de piso f3" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f4.jpg" alt="Proyecto de piso f4" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f5.jpg" alt="Proyecto de piso f5" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f6.jpg" alt="Proyecto de piso f6" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f7.jpg" alt="Proyecto de piso f7" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f8.jpg" alt="Proyecto de piso f8" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f9.jpg" alt="Proyecto de piso f9" loading="lazy" /></figure></li>
-        </ul>
-        <button class="carousel-btn next" aria-label="Ver siguiente" title="Siguiente">›</button>
-      </div>
+  <!-- ===== Galería: carrusel con botones bonitos ===== -->
+  <section id="galeria" aria-label="Galería de Proyectos">
+    <h2>Galería de Proyectos</h2>
 
-      <p class="hint">En móvil, desliza para ver más.</p>
-    </section>
+    <div class="carousel" id="galleryES">
+      <button class="carousel-btn prev" aria-label="Anterior" title="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
 
-    <!-- ¿Por qué nosotros? -->
-    <section id="por-que">
-      <h2>¿Por qué elegir Jairo’s Flooring?</h2>
-      <div class="why-us">
-        <div class="why-item">
-          <h3>Experiencia local</h3>
-          <p>Con años de trabajo en Seattle y el Noroeste, recomendamos materiales que resisten la humedad.</p>
-        </div>
-        <div class="why-item">
-          <h3>Calidad y garantía</h3>
-          <p>Materiales de alta calidad, licencia y seguro. Ofrecemos garantía para tu tranquilidad.</p>
-        </div>
-        <div class="why-item">
-          <h3>Atención personalizada</h3>
-          <p>Asesoría, medición y presupuesto gratuitos para soluciones a tu medida.</p>
-        </div>
-      </div>
-    </section>
+      <ul class="carousel-track">
+        <li class="slide"><figure class="tile"><img src="images/f1.jpg" alt="Proyecto de piso f1" loading="lazy"></figure></li>
+        <li class="slide"><figure class="tile"><img src="images/f2.jpg" alt="Proyecto de piso f2" loading="lazy"></figure></li>
+        <li class="slide"><figure class="tile"><img src="images/f3.jpg" alt="Proyecto de piso f3" loading="lazy"></figure></li>
+        <li class="slide"><figure class="tile"><img src="images/f4.jpg" alt="Proyecto de piso f4" loading="lazy"></figure></li>
+        <li class="slide"><figure class="tile"><img src="images/f5.jpg" alt="Proyecto de piso f5" loading="lazy"></figure></li>
+        <li class="slide"><figure class="tile"><img src="images/f6.jpg" alt="Proyecto de piso f6" loading="lazy"></figure></li>
+        <li class="slide"><figure class="tile"><img src="images/f7.jpg" alt="Proyecto de piso f7" loading="lazy"></figure></li>
+        <li class="slide"><figure class="tile"><img src="images/f8.jpg" alt="Proyecto de piso f8" loading="lazy"></figure></li>
+        <li class="slide"><figure class="tile"><img src="images/f9.jpg" alt="Proyecto de piso f9" loading="lazy"></figure></li>
+      </ul>
 
-    <!-- Proceso -->
-    <section id="proceso">
-      <h2>Nuestro Proceso</h2>
-      <ol class="process">
-        <li><strong>Consulta gratuita:</strong> Conocemos tus gustos, necesidades y presupuesto.</li>
-        <li><strong>Visita y medición:</strong> Tomamos medidas y te mostramos muestras.</li>
-        <li><strong>Presupuesto:</strong> Propuesta clara con opciones.</li>
-        <li><strong>Instalación profesional:</strong> Cuidado y limpieza, respetando tu hogar.</li>
-        <li><strong>Revisión y garantía:</strong> Recomendaciones de mantenimiento.</li>
-      </ol>
-    </section>
-
-    <!-- Testimonios -->
-    <section id="testimonios">
-      <h2>Testimonios</h2>
-      <div class="testimonials">
-        <div class="testimonial">
-          <p>“Trabajo excepcional. El piso de nuestra sala quedó hermoso y el servicio fue impecable.”</p>
-          <span>- Kevin R., Seattle</span>
-        </div>
-        <div class="testimonial">
-          <p>“Profesionales y responsables. Transformaron nuestra oficina con nuevos pisos vinílicos.”</p>
-          <span>- Rafa G., Bellevue</span>
-        </div>
-        <div class="testimonial">
-          <p>“Nos ayudaron a elegir la mejor alfombra para nuestro hogar. ¡Totalmente recomendados!”</p>
-          <span>- Isabella P., Tacoma</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Síguenos -->
-    <section id="siguenos">
-      <h2>Síguenos</h2>
-      <p>
-        Conoce más de nuestro trabajo y encuentra inspiración en nuestras redes.
-        Síguenos en <a href="#" target="_blank" rel="noopener">Instagram</a> y
-        <a href="#" target="_blank" rel="noopener">Facebook</a>.
-      </p>
-    </section>
-
-    <!-- Contacto -->
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p>¿Listo para transformar tus espacios?</p>
-
-      <form id="contactForm">
-        <input type="text" name="nombre" placeholder="Tu nombre" required />
-        <input type="email" name="email" placeholder="Tu correo electrónico" required />
-        <input type="tel" name="telefono" placeholder="Tu teléfono" required />
-        <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
-        <button type="submit" class="btn">Enviar Mensaje</button>
-        <p id="formStatus" class="form-status" aria-live="polite"></p>
-      </form>
-
-      <div class="info">
-        <p><strong>Ubicación:</strong> Seattle, WA</p>
-        <p><strong>Teléfono:</strong> (206) 123-4567</p>
-        <p><strong>Email:</strong> info@jairosflooring.com</p>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <p>&copy; 2025 Jairo’s Flooring. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- ===== Menú móvil: FAB + Drawer ===== -->
-    <button class="fab" aria-label="Abrir menú" aria-controls="mobile-drawer" aria-expanded="false">☰</button>
-
-    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
-      <div class="drawer-backdrop"></div>
-      <nav class="drawer-panel">
-        <button class="drawer-close" aria-label="Cerrar menú">×</button>
-        <ul class="drawer-links">
-          <li><a href="#home">Inicio</a></li>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#galeria">Galería</a></li>
-          <li><a href="#por-que">¿Por qué nosotros?</a></li>
-          <li><a href="#proceso">Proceso</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-        </ul>
-        <div class="drawer-lang">
-          <a class="lang-btn active" href="index.html">ES</a>
-          <a class="lang-btn" href="index_en.html" hreflang="en">EN</a>
-        </div>
-      </nav>
+      <button class="carousel-btn next" aria-label="Siguiente" title="Siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
     </div>
 
-    <!-- JS: Drawer + envío EMAIL + Carrusel -->
-    <script>
-      // Drawer móvil
-      const fab = document.querySelector('.fab');
-      const drawer = document.getElementById('mobile-drawer');
-      const closeBtn = drawer?.querySelector('.drawer-close');
-      const backdrop = drawer?.querySelector('.drawer-backdrop');
-      function openDrawer(){ drawer?.classList.add('open'); fab?.setAttribute('aria-expanded','true'); }
-      function closeDrawer(){ drawer?.classList.remove('open'); fab?.setAttribute('aria-expanded','false'); }
-      fab?.addEventListener('click', openDrawer);
-      closeBtn?.addEventListener('click', closeDrawer);
-      backdrop?.addEventListener('click', closeDrawer);
-      drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
+    <p class="hint">En móvil, desliza para ver más.</p>
+  </section>
 
-      // Envío del formulario a /api/send-sms (EMAIL via Resend)
-      const form = document.getElementById('contactForm');
-      const statusEl = document.getElementById('formStatus');
-      form?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        statusEl.textContent = 'Enviando...';
-        const data = {
-          name: form.nombre.value,
-          email: form.email.value,
-          phone: form.telefono.value,
-          message: form.mensaje.value,
-          lang: 'es'
-        };
-        try {
-          const res = await fetch('/api/send-sms', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
-          const out = await res.json();
-          if (res.ok && out.ok) {
-            statusEl.textContent = '¡Gracias! Te contactaremos pronto.';
-            form.reset();
-          } else {
-            statusEl.textContent = 'Hubo un problema al enviar. Intenta más tarde.';
-          }
-        } catch (err) {
-          statusEl.textContent = 'Error de red. Intenta más tarde.';
-        }
-      });
+  <!-- resto igual -->
+  <section id="por-que"><h2>¿Por qué elegir Jairo’s Flooring?</h2>
+    <div class="why-us">
+      <div class="why-item"><h3>Experiencia local</h3><p>Con años de trabajo en Seattle y el Noroeste, recomendamos materiales que resisten la humedad.</p></div>
+      <div class="why-item"><h3>Calidad y garantía</h3><p>Materiales de alta calidad, licencia y seguro. Ofrecemos garantía para tu tranquilidad.</p></div>
+      <div class="why-item"><h3>Atención personalizada</h3><p>Asesoría, medición y presupuesto gratuitos para soluciones a tu medida.</p></div>
+    </div>
+  </section>
 
-      // ========= Carrusel con auto-scroll + botones =========
-      const track = document.getElementById('galleryTrack');
-      const btnPrev = document.querySelector('.carousel-btn.prev');
-      const btnNext = document.querySelector('.carousel-btn.next');
+  <section id="proceso"><h2>Nuestro Proceso</h2>
+    <ol class="process">
+      <li><strong>Consulta gratuita:</strong> Conocemos tus gustos, necesidades y presupuesto.</li>
+      <li><strong>Visita y medición:</strong> Tomamos medidas y te mostramos muestras.</li>
+      <li><strong>Presupuesto:</strong> Propuesta clara con opciones.</li>
+      <li><strong>Instalación profesional:</strong> Cuidado y limpieza, respetando tu hogar.</li>
+      <li><strong>Revisión y garantía:</strong> Recomendaciones de mantenimiento.</li>
+    </ol>
+  </section>
 
-      function gapPx() {
-        const v = getComputedStyle(document.documentElement).getPropertyValue('--carousel-gap').trim();
-        return parseInt(v || '28', 10);
+  <section id="testimonios"><h2>Testimonios</h2>
+    <div class="testimonials">
+      <div class="testimonial"><p>“Trabajo excepcional. El piso de nuestra sala quedó hermoso y el servicio fue impecable.”</p><span>- Kevin R., Seattle</span></div>
+      <div class="testimonial"><p>“Profesionales y responsables. Transformaron nuestra oficina con nuevos pisos vinílicos.”</p><span>- Rafa G., Bellevue</span></div>
+      <div class="testimonial"><p>“Nos ayudaron a elegir la mejor alfombra para nuestro hogar. ¡Totalmente recomendados!”</p><span>- Isabella P., Tacoma</span></div>
+    </div>
+  </section>
+
+  <section id="siguenos"><h2>Síguenos</h2>
+    <p>Conoce más de nuestro trabajo y encuentra inspiración en nuestras redes. Síguenos en <a href="#" target="_blank" rel="noopener">Instagram</a> y <a href="#" target="_blank" rel="noopener">Facebook</a>.</p>
+  </section>
+
+  <section id="contacto"><h2>Contacto</h2><p>¿Listo para transformar tus espacios?</p>
+    <form id="contactForm">
+      <input type="text" name="nombre" placeholder="Tu nombre" required />
+      <input type="email" name="email" placeholder="Tu correo electrónico" required />
+      <input type="tel" name="telefono" placeholder="Tu teléfono" required />
+      <textarea name="mensaje" placeholder="Cuéntanos sobre tu proyecto" required></textarea>
+      <button type="submit" class="btn">Enviar Mensaje</button>
+      <p id="formStatus" class="form-status" aria-live="polite"></p>
+    </form>
+    <div class="info"><p><strong>Ubicación:</strong> Seattle, WA</p><p><strong>Teléfono:</strong> (206) 123-4567</p><p><strong>Email:</strong> info@jairosflooring.com</p></div>
+  </section>
+
+  <footer><p>&copy; 2025 Jairo’s Flooring. Todos los derechos reservados.</p></footer>
+
+  <button class="fab" aria-label="Abrir menú" aria-controls="mobile-drawer" aria-expanded="false">☰</button>
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+    <div class="drawer-backdrop"></div>
+    <nav class="drawer-panel">
+      <button class="drawer-close" aria-label="Cerrar menú">×</button>
+      <ul class="drawer-links">
+        <li><a href="#home">Inicio</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#galeria">Galería</a></li>
+        <li><a href="#por-que">¿Por qué nosotros?</a></li><li><a href="#proceso">Proceso</a></li><li><a href="#testimonios">Testimonios</a></li><li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="drawer-lang"><a class="lang-btn active" href="index.html">ES</a><a class="lang-btn" href="index_en.html" hreflang="en">EN</a></div>
+    </nav>
+  </div>
+
+  <script>
+    // Drawer
+    const fab=document.querySelector('.fab'); const drawer=document.getElementById('mobile-drawer');
+    const closeBtn=drawer?.querySelector('.drawer-close'); const backdrop=drawer?.querySelector('.drawer-backdrop');
+    function openDrawer(){ drawer?.classList.add('open'); fab?.setAttribute('aria-expanded','true');}
+    function closeDrawer(){ drawer?.classList.remove('open'); fab?.setAttribute('aria-expanded','false');}
+    fab?.addEventListener('click',openDrawer); closeBtn?.addEventListener('click',closeDrawer); backdrop?.addEventListener('click',closeDrawer);
+    drawer?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeDrawer));
+
+    // Email (misma ruta serverless)
+    const form=document.getElementById('contactForm'); const statusEl=document.getElementById('formStatus');
+    form?.addEventListener('submit',async (e)=>{
+      e.preventDefault(); statusEl.textContent='Enviando...';
+      const data={ name:form.nombre.value, email:form.email.value, phone:form.telefono.value, message:form.mensaje.value, lang:'es' };
+      try{
+        const res=await fetch('/api/send-sms',{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data) });
+        const out=await res.json();
+        if(res.ok && out.ok){ statusEl.textContent='¡Gracias! Te contactaremos pronto.'; form.reset(); }
+        else{ statusEl.textContent='Hubo un problema al enviar. Intenta más tarde.'; }
+      }catch{ statusEl.textContent='Error de red. Intenta más tarde.'; }
+    });
+
+    // ===== Carrusel (auto + botones) =====
+    (function initCarousel(rootId){
+      const root=document.getElementById(rootId);
+      if(!root) return;
+      const track=root.querySelector('.carousel-track');
+      const prev=root.querySelector('.prev'); const next=root.querySelector('.next');
+
+      const gap = () => parseInt(getComputedStyle(document.documentElement).getPropertyValue('--carousel-gap')||'28',10);
+      const itemWidth = () => {
+        const first=track.querySelector('.slide');
+        return first ? first.getBoundingClientRect().width + gap() : 500;
+      };
+
+      function goNext(){
+        const w=itemWidth();
+        const nearEnd = track.scrollLeft + track.clientWidth + w >= track.scrollWidth - 1;
+        track.scrollBy({ left: nearEnd ? track.scrollWidth : w, behavior:'smooth' });
+        if(nearEnd) setTimeout(()=>track.scrollTo({left:0}), 500);
       }
-      function slideWidth() {
-        const first = track.querySelector('.slide');
-        return first ? first.getBoundingClientRect().width + gapPx() : 400;
-        }
-
-      function scrollNext() {
-        const amount = slideWidth();
-        const nearEnd = track.scrollLeft + track.clientWidth + amount >= track.scrollWidth;
-        track.scrollBy({ left: nearEnd ? track.scrollWidth : amount, behavior: 'smooth' });
-        if (nearEnd) {
-          // wrap al inicio tras animación
-          setTimeout(() => track.scrollTo({ left: 0 }), 600);
-        }
-      }
-      function scrollPrev() {
-        const amount = slideWidth();
-        const atStart = track.scrollLeft <= 1;
-        if (atStart) {
-          track.scrollTo({ left: track.scrollWidth, behavior: 'auto' });
-        }
-        track.scrollBy({ left: -amount, behavior: 'smooth' });
+      function goPrev(){
+        const w=itemWidth();
+        if(track.scrollLeft<=1) track.scrollTo({ left: track.scrollWidth, behavior:'auto' });
+        track.scrollBy({ left: -w, behavior:'smooth' });
       }
 
-      let autoTimer = null;
-      function startAuto(){ stopAuto(); autoTimer = setInterval(scrollNext, 3500); }
-      function stopAuto(){ if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+      let timer=null;
+      const start=()=>{ stop(); timer=setInterval(goNext, 3500); };
+      const stop =()=>{ if(timer){ clearInterval(timer); timer=null; } };
 
-      // Inicia auto
-      startAuto();
+      start();
+      ['mouseenter','focusin','touchstart','pointerdown'].forEach(ev=>track.addEventListener(ev, stop, {passive:true}));
+      ['mouseleave','focusout','pointerup'].forEach(ev=>track.addEventListener(ev, start));
 
-      // Pausar al interactuar
-      ['mouseenter','focusin','touchstart'].forEach(evt => {
-        track.addEventListener(evt, stopAuto, { passive: true });
-      });
-      ['mouseleave','focusout'].forEach(evt => {
-        track.addEventListener(evt, startAuto);
-      });
-
-      // Botones
-      btnNext.addEventListener('click', () => { stopAuto(); scrollNext(); });
-      btnPrev.addEventListener('click', () => { stopAuto(); scrollPrev(); });
-
-      // Accesibilidad teclado
-      btnNext.addEventListener('keyup', e => { if (e.key === 'Enter' || e.key === ' ') btnNext.click(); });
-      btnPrev.addEventListener('keyup', e => { if (e.key === 'Enter' || e.key === ' ') btnPrev.click(); });
-    </script>
-  </body>
+      next.addEventListener('click', ()=>{ stop(); goNext(); });
+      prev.addEventListener('click', ()=>{ stop(); goPrev(); });
+    })('galleryES');
+  </script>
+</body>
 </html>
