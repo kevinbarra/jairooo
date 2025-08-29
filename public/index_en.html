@@ -35,6 +35,7 @@
       </nav>
     </header>
 
+    <!-- Hero restored -->
     <section id="home" class="hero" style="background-image:url('images/wood.png')">
       <div class="hero-content">
         <h1>Jairo’s Flooring: Quality Flooring &amp; Carpets in Seattle</h1>
@@ -43,11 +44,12 @@
       </div>
     </section>
 
+    <!-- Services restored -->
     <section id="services">
       <h2>Our Services</h2>
       <div class="services">
         <div class="service">
-          <img src="images/wood.png" alt="Wood flooring installation" loading="lazy" />
+          <img src="images/wood.png" alt="Hardwood installation" loading="lazy" />
           <h3>Hardwood</h3>
           <p>Solid and engineered wood installation and repairs with durable finishes.</p>
         </div>
@@ -69,34 +71,24 @@
       </div>
     </section>
 
-    <!-- Gallery - HYBRID CAROUSEL -->
+    <!-- Gallery -->
     <section id="gallery" aria-label="Project Gallery">
       <h2>Project Gallery</h2>
 
       <div class="carousel" data-autoloop aria-live="off">
+        <button class="carousel-btn prev" aria-label="Previous" title="Previous">‹</button>
         <ul class="carousel-track" id="galleryTrackEn">
-          <!-- Add more slides as needed -->
-          <li class="slide">
-            <figure class="tile">
-              <img src="images/wood.png" alt="Walnut hardwood floor project" loading="lazy" />
-            </figure>
-          </li>
-          <li class="slide">
-            <figure class="tile">
-              <img src="images/vinyl.png" alt="Gray vinyl flooring project" loading="lazy" />
-            </figure>
-          </li>
-          <li class="slide">
-            <figure class="tile">
-              <img src="images/tile.png" alt="Light gray kitchen tile installation" loading="lazy" />
-            </figure>
-          </li>
-          <li class="slide">
-            <figure class="tile">
-              <img src="images/carpet.png" alt="Beige carpet installed in living room" loading="lazy" />
-            </figure>
-          </li>
+          <li class="slide"><figure class="tile"><img src="images/f1.jpg" alt="Flooring project f1" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f2.jpg" alt="Flooring project f2" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f3.jpg" alt="Flooring project f3" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f4.jpg" alt="Flooring project f4" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f5.jpg" alt="Flooring project f5" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f6.jpg" alt="Flooring project f6" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f7.jpg" alt="Flooring project f7" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f8.jpg" alt="Flooring project f8" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f9.jpg" alt="Flooring project f9" loading="lazy" /></figure></li>
         </ul>
+        <button class="carousel-btn next" aria-label="Next" title="Next">›</button>
       </div>
 
       <p class="hint">On mobile, swipe to explore.</p>
@@ -195,6 +187,7 @@
     </div>
 
     <script>
+      // Drawer
       const fab = document.querySelector('.fab');
       const drawer = document.getElementById('mobile-drawer');
       const closeBtn = drawer?.querySelector('.drawer-close');
@@ -237,27 +230,39 @@
         }
       });
 
-      // Carousel (desktop clone)
-      const trackEn = document.getElementById('galleryTrackEn');
-      const mqDesktop = window.matchMedia('(min-width: 1024px)');
-      function setupCarouselEn(){
-        trackEn.querySelectorAll('.clone').forEach(n=>n.remove());
-        if (mqDesktop.matches) {
-          const slides = Array.from(trackEn.children);
-          slides.forEach(s => {
-            const c = s.cloneNode(true);
-            c.classList.add('clone');
-            trackEn.appendChild(c);
-          });
-          trackEn.setAttribute('data-loop','true');
-        } else {
-          trackEn.removeAttribute('data-loop');
-        }
+      // Carousel
+      const track = document.getElementById('galleryTrackEn');
+      const btnPrev = document.querySelector('.carousel-btn.prev');
+      const btnNext = document.querySelector('.carousel-btn.next');
+
+      function gapPx() {
+        const v = getComputedStyle(document.documentElement).getPropertyValue('--carousel-gap').trim();
+        return parseInt(v || '28', 10);
       }
-      setupCarouselEn();
-      mqDesktop.addEventListener?.('change', setupCarouselEn);
-      trackEn?.addEventListener('focusin', () => trackEn.classList.add('pause'));
-      trackEn?.addEventListener('focusout', () => trackEn.classList.remove('pause'));
+      function slideWidth() {
+        const first = track.querySelector('.slide');
+        return first ? first.getBoundingClientRect().width + gapPx() : 400;
+      }
+      function scrollNext() {
+        const amount = slideWidth();
+        const nearEnd = track.scrollLeft + track.clientWidth + amount >= track.scrollWidth;
+        track.scrollBy({ left: nearEnd ? track.scrollWidth : amount, behavior: 'smooth' });
+        if (nearEnd) setTimeout(() => track.scrollTo({ left: 0 }), 600);
+      }
+      function scrollPrev() {
+        const amount = slideWidth();
+        const atStart = track.scrollLeft <= 1;
+        if (atStart) track.scrollTo({ left: track.scrollWidth, behavior: 'auto' });
+        track.scrollBy({ left: -amount, behavior: 'smooth' });
+      }
+      let autoTimer = null;
+      function startAuto(){ stopAuto(); autoTimer = setInterval(scrollNext, 3500); }
+      function stopAuto(){ if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+      startAuto();
+      ['mouseenter','focusin','touchstart'].forEach(evt => track.addEventListener(evt, stopAuto, { passive: true }));
+      ['mouseleave','focusout'].forEach(evt => track.addEventListener(evt, startAuto));
+      btnNext.addEventListener('click', () => { stopAuto(); scrollNext(); });
+      btnPrev.addEventListener('click', () => { stopAuto(); scrollPrev(); });
     </script>
   </body>
 </html>
