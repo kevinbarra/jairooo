@@ -41,8 +41,8 @@
       </nav>
     </header>
 
-    <!-- Hero -->
-    <section id="home" class="hero" style="background-image:url('images/f1.jpg')">
+    <!-- Hero (restaurado a wood.png) -->
+    <section id="home" class="hero" style="background-image:url('images/wood.png')">
       <div class="hero-content">
         <h1>Jairo’s Flooring: Pisos &amp; Alfombras de Calidad en Seattle</h1>
         <p>Calidad, pasión y experiencia en cada proyecto</p>
@@ -50,50 +50,52 @@
       </div>
     </section>
 
-    <!-- Servicios -->
+    <!-- Servicios (restaurados a *.png) -->
     <section id="servicios">
       <h2>Nuestros Servicios</h2>
       <div class="services">
         <div class="service">
-          <img src="images/f2.jpg" alt="Instalación de pisos de madera" loading="lazy" />
+          <img src="images/wood.png" alt="Instalación de pisos de madera" loading="lazy" />
           <h3>Pisos de Madera</h3>
           <p>Instalación y reparación de madera maciza y laminada con acabados duraderos.</p>
         </div>
         <div class="service">
-          <img src="images/f3.jpg" alt="Instalación de pisos vinílicos" loading="lazy" />
+          <img src="images/vinyl.png" alt="Instalación de pisos vinílicos" loading="lazy" />
           <h3>Pisos Vinílicos</h3>
           <p>Variedad de estilos en vinil y laminado para espacios resistentes al agua.</p>
         </div>
         <div class="service">
-          <img src="images/f4.jpg" alt="Instalación de baldosas y azulejos" loading="lazy" />
+          <img src="images/tile.png" alt="Instalación de baldosas y azulejos" loading="lazy" />
           <h3>Baldosas y Azulejos</h3>
           <p>Diseño e instalación para cocinas, baños y superficies de alto tránsito.</p>
         </div>
         <div class="service">
-          <img src="images/f5.jpg" alt="Instalación de alfombras" loading="lazy" />
+          <img src="images/carpet.png" alt="Instalación de alfombras" loading="lazy" />
           <h3>Alfombras</h3>
           <p>Alfombras suaves y duraderas que añaden confort y mejoran la acústica.</p>
         </div>
       </div>
     </section>
 
-    <!-- Galería - CARRUSEL HÍBRIDO -->
+    <!-- Galería - Carrusel con botones -->
     <section id="galeria" aria-label="Galería de Proyectos">
       <h2>Galería de Proyectos</h2>
 
       <div class="carousel" data-autoloop aria-live="off">
+        <button class="carousel-btn prev" aria-label="Ver anterior" title="Anterior">‹</button>
         <ul class="carousel-track" id="galleryTrack">
-          <!-- === Slides nuevos con f1..f9 === -->
-          <li class="slide"><figure class="tile"><img src="images/f1.jpg" alt="Proyecto de piso: f1" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f2.jpg" alt="Proyecto de piso: f2" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f3.jpg" alt="Proyecto de piso: f3" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f4.jpg" alt="Proyecto de piso: f4" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f5.jpg" alt="Proyecto de piso: f5" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f6.jpg" alt="Proyecto de piso: f6" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f7.jpg" alt="Proyecto de piso: f7" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f8.jpg" alt="Proyecto de piso: f8" loading="lazy" /></figure></li>
-          <li class="slide"><figure class="tile"><img src="images/f9.jpg" alt="Proyecto de piso: f9" loading="lazy" /></figure></li>
+          <!-- Solo f1.jpg … f9.jpg -->
+          <li class="slide"><figure class="tile"><img src="images/f1.jpg" alt="Proyecto de piso f1" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f2.jpg" alt="Proyecto de piso f2" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f3.jpg" alt="Proyecto de piso f3" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f4.jpg" alt="Proyecto de piso f4" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f5.jpg" alt="Proyecto de piso f5" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f6.jpg" alt="Proyecto de piso f6" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f7.jpg" alt="Proyecto de piso f7" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f8.jpg" alt="Proyecto de piso f8" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f9.jpg" alt="Proyecto de piso f9" loading="lazy" /></figure></li>
         </ul>
+        <button class="carousel-btn next" aria-label="Ver siguiente" title="Siguiente">›</button>
       </div>
 
       <p class="hint">En móvil, desliza para ver más.</p>
@@ -253,29 +255,60 @@
         }
       });
 
-      // Carrusel: clonado dinámico para loop (solo desktop)
+      // ========= Carrusel con auto-scroll + botones =========
       const track = document.getElementById('galleryTrack');
-      const mqDesktop = window.matchMedia('(min-width: 1024px)');
-      function setupCarousel(){
-        track.querySelectorAll('.clone').forEach(n=>n.remove());
-        if (mqDesktop.matches) {
-          const slides = Array.from(track.children);
-          slides.forEach(s => {
-            const c = s.cloneNode(true);
-            c.classList.add('clone');
-            track.appendChild(c);
-          });
-          track.setAttribute('data-loop','true');
-        } else {
-          track.removeAttribute('data-loop');
+      const btnPrev = document.querySelector('.carousel-btn.prev');
+      const btnNext = document.querySelector('.carousel-btn.next');
+
+      function gapPx() {
+        const v = getComputedStyle(document.documentElement).getPropertyValue('--carousel-gap').trim();
+        return parseInt(v || '28', 10);
+      }
+      function slideWidth() {
+        const first = track.querySelector('.slide');
+        return first ? first.getBoundingClientRect().width + gapPx() : 400;
+        }
+
+      function scrollNext() {
+        const amount = slideWidth();
+        const nearEnd = track.scrollLeft + track.clientWidth + amount >= track.scrollWidth;
+        track.scrollBy({ left: nearEnd ? track.scrollWidth : amount, behavior: 'smooth' });
+        if (nearEnd) {
+          // wrap al inicio tras animación
+          setTimeout(() => track.scrollTo({ left: 0 }), 600);
         }
       }
-      setupCarousel();
-      mqDesktop.addEventListener?.('change', setupCarousel);
+      function scrollPrev() {
+        const amount = slideWidth();
+        const atStart = track.scrollLeft <= 1;
+        if (atStart) {
+          track.scrollTo({ left: track.scrollWidth, behavior: 'auto' });
+        }
+        track.scrollBy({ left: -amount, behavior: 'smooth' });
+      }
 
-      // Pausa animación al focusear con teclado (accesibilidad)
-      track?.addEventListener('focusin', () => track.classList.add('pause'));
-      track?.addEventListener('focusout', () => track.classList.remove('pause'));
+      let autoTimer = null;
+      function startAuto(){ stopAuto(); autoTimer = setInterval(scrollNext, 3500); }
+      function stopAuto(){ if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } }
+
+      // Inicia auto
+      startAuto();
+
+      // Pausar al interactuar
+      ['mouseenter','focusin','touchstart'].forEach(evt => {
+        track.addEventListener(evt, stopAuto, { passive: true });
+      });
+      ['mouseleave','focusout'].forEach(evt => {
+        track.addEventListener(evt, startAuto);
+      });
+
+      // Botones
+      btnNext.addEventListener('click', () => { stopAuto(); scrollNext(); });
+      btnPrev.addEventListener('click', () => { stopAuto(); scrollPrev(); });
+
+      // Accesibilidad teclado
+      btnNext.addEventListener('keyup', e => { if (e.key === 'Enter' || e.key === ' ') btnNext.click(); });
+      btnPrev.addEventListener('keyup', e => { if (e.key === 'Enter' || e.key === ' ') btnPrev.click(); });
     </script>
   </body>
 </html>
