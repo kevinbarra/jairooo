@@ -42,7 +42,7 @@
     </header>
 
     <!-- Hero -->
-    <section id="home" class="hero" style="background-image:url('images/wood.png')">
+    <section id="home" class="hero" style="background-image:url('images/f1.jpg')">
       <div class="hero-content">
         <h1>Jairo’s Flooring: Pisos &amp; Alfombras de Calidad en Seattle</h1>
         <p>Calidad, pasión y experiencia en cada proyecto</p>
@@ -55,22 +55,22 @@
       <h2>Nuestros Servicios</h2>
       <div class="services">
         <div class="service">
-          <img src="images/wood.png" alt="Instalación de pisos de madera" loading="lazy" />
+          <img src="images/f2.jpg" alt="Instalación de pisos de madera" loading="lazy" />
           <h3>Pisos de Madera</h3>
           <p>Instalación y reparación de madera maciza y laminada con acabados duraderos.</p>
         </div>
         <div class="service">
-          <img src="images/vinyl.png" alt="Instalación de pisos vinílicos" loading="lazy" />
+          <img src="images/f3.jpg" alt="Instalación de pisos vinílicos" loading="lazy" />
           <h3>Pisos Vinílicos</h3>
           <p>Variedad de estilos en vinil y laminado para espacios resistentes al agua.</p>
         </div>
         <div class="service">
-          <img src="images/tile.png" alt="Instalación de baldosas y azulejos" loading="lazy" />
+          <img src="images/f4.jpg" alt="Instalación de baldosas y azulejos" loading="lazy" />
           <h3>Baldosas y Azulejos</h3>
           <p>Diseño e instalación para cocinas, baños y superficies de alto tránsito.</p>
         </div>
         <div class="service">
-          <img src="images/carpet.png" alt="Instalación de alfombras" loading="lazy" />
+          <img src="images/f5.jpg" alt="Instalación de alfombras" loading="lazy" />
           <h3>Alfombras</h3>
           <p>Alfombras suaves y duraderas que añaden confort y mejoran la acústica.</p>
         </div>
@@ -81,31 +81,18 @@
     <section id="galeria" aria-label="Galería de Proyectos">
       <h2>Galería de Proyectos</h2>
 
-      <!-- Wrapper general -->
       <div class="carousel" data-autoloop aria-live="off">
-        <!-- Pista (se clona automáticamente en desktop para loop infinito) -->
         <ul class="carousel-track" id="galleryTrack">
-          <!-- === AÑADE AQUÍ MÁS <li class="slide"> CON TUS FOTOS === -->
-          <li class="slide">
-            <figure class="tile">
-              <img src="images/wood.png" alt="Proyecto de piso de madera color nogal" loading="lazy" />
-            </figure>
-          </li>
-          <li class="slide">
-            <figure class="tile">
-              <img src="images/vinyl.png" alt="Proyecto de piso vinílico gris" loading="lazy" />
-            </figure>
-          </li>
-          <li class="slide">
-            <figure class="tile">
-              <img src="images/tile.png" alt="Instalación de baldosa gris en cocina" loading="lazy" />
-            </figure>
-          </li>
-          <li class="slide">
-            <figure class="tile">
-              <img src="images/carpet.png" alt="Alfombra beige instalada en sala" loading="lazy" />
-            </figure>
-          </li>
+          <!-- === Slides nuevos con f1..f9 === -->
+          <li class="slide"><figure class="tile"><img src="images/f1.jpg" alt="Proyecto de piso: f1" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f2.jpg" alt="Proyecto de piso: f2" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f3.jpg" alt="Proyecto de piso: f3" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f4.jpg" alt="Proyecto de piso: f4" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f5.jpg" alt="Proyecto de piso: f5" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f6.jpg" alt="Proyecto de piso: f6" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f7.jpg" alt="Proyecto de piso: f7" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f8.jpg" alt="Proyecto de piso: f8" loading="lazy" /></figure></li>
+          <li class="slide"><figure class="tile"><img src="images/f9.jpg" alt="Proyecto de piso: f9" loading="lazy" /></figure></li>
         </ul>
       </div>
 
@@ -266,14 +253,12 @@
         }
       });
 
-      // ===== Carrusel: clonado dinámico para loop (solo desktop) =====
+      // Carrusel: clonado dinámico para loop (solo desktop)
       const track = document.getElementById('galleryTrack');
       const mqDesktop = window.matchMedia('(min-width: 1024px)');
       function setupCarousel(){
-        // Limpia clones previos
         track.querySelectorAll('.clone').forEach(n=>n.remove());
         if (mqDesktop.matches) {
-          // Duplica los slides para loop continuo
           const slides = Array.from(track.children);
           slides.forEach(s => {
             const c = s.cloneNode(true);
