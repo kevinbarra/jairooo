@@ -1,14 +1,16 @@
 // api/send-sms.js
-// Vercel Serverless Function (Node.js, ESM)
-// Requiere ENV: TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM, SMS_TO
-// Opcional: SITE_ORIGIN (p.ej. https://jairos-flooring.vercel.app)
-
-import twilio from "twilio";
+// Enviar "lead" por EMAIL vía Resend (plan gratis)
+// ENV requeridas en Vercel:
+//  - RESEND_API_KEY
+//  - EMAIL_TO        (correo de tu familiar que recibirá los leads)
+//  - EMAIL_FROM      (remitente verificado en Resend, p.ej. leads@tudominio.com)
+// Opcional:
+//  - SITE_ORIGIN     (p.ej. https://jairos-flooring.vercel.app) para CORS estricto
 
 const ALLOWED_ORIGIN = process.env.SITE_ORIGIN || "*";
 
 export default async function handler(req, res) {
-  // CORS básico / preflight
+  // CORS
   res.setHeader("Access-Control-Allow-Origin", ALLOWED_ORIGIN);
   res.setHeader("Vary", "Origin");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -27,36 +29,61 @@ export default async function handler(req, res) {
       return res.status(400).json({ ok: false, error: "Missing fields" });
     }
 
-    const accountSid = process.env.TWILIO_ACCOUNT_SID;
-    const authToken  = process.env.TWILIO_AUTH_TOKEN;
-    const fromNumber = process.env.TWILIO_FROM; // +12065550123 (Twilio)
-    const toNumber   = process.env.SMS_TO;      // +1206XXXXXXX (familiar)
+    const RESEND_API_KEY = process.env.RESEND_API_KEY;
+    const EMAIL_TO = process.env.EMAIL_TO;
+    const EMAIL_FROM = process.env.EMAIL_FROM;
 
-    if (!accountSid || !authToken || !fromNumber || !toNumber) {
-      return res.status(500).json({ ok: false, error: "Missing Twilio env vars" });
+    if (!RESEND_API_KEY || !EMAIL_TO || !EMAIL_FROM) {
+      return res.status(500).json({ ok: false, error: "Missing email env vars" });
     }
 
-    const client = twilio(accountSid, authToken);
+    const subject =
+      lang === "en" ? "New lead – Jairo’s Flooring" : "Nuevo lead – Jairo’s Flooring";
 
-    // Mensaje compacto; máx ~1600 chars por seguridad
-    const header = lang === "en" ? "New lead from website" : "Nuevo lead del sitio";
-    const text = [
-      `${header}: Jairo's Flooring`,
-      `Name/Nombre: ${name}`,
-      `Email: ${email}`,
-      `Phone/Tel: ${phone || "-"}`,
-      `Message/Mensaje: ${message}`
-    ].join(" | ").slice(0, 1600);
+    const html = `
+      <h2 style="font-family:Arial,sans-serif;margin:0 0 12px 0;">${subject}</h2>
+      <p style="font-family:Arial,sans-serif;margin:8px 0;"><b>Name/Nombre:</b> ${escapeHtml(name)}</p>
+      <p style="font-family:Arial,sans-serif;margin:8px 0;"><b>Email:</b> ${escapeHtml(email)}</p>
+      <p style="font-family:Arial,sans-serif;margin:8px 0;"><b>Phone/Tel:</b> ${escapeHtml(phone || "-")}</p>
+      <p style="font-family:Arial,sans-serif;margin:8px 0;"><b>Message/Mensaje:</b><br>${nl2br(escapeHtml(message))}</p>
+    `;
 
-    await client.messages.create({
-      from: fromNumber,
-      to: toNumber,
-      body: text,
+    const r = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${RESEND_API_KEY}`
+      },
+      body: JSON.stringify({
+        to: EMAIL_TO,
+        from: EMAIL_FROM,
+        subject,
+        html
+      })
     });
 
+    if (!r.ok) {
+      const err = await r.text().catch(() => "");
+      console.error("Resend error:", err);
+      return res.status(502).json({ ok: false, error: "Email failed" });
+    }
+
     return res.status(200).json({ ok: true });
-  } catch (err) {
-    console.error("SMS error:", err);
-    return res.status(500).json({ ok: false, error: "SMS failed" });
+  } catch (e) {
+    console.error("Email handler error:", e);
+    return res.status(500).json({ ok: false, error: "Internal error" });
   }
+}
+
+// Helpers simples de seguridad/render
+function escapeHtml(str = "") {
+  return String(str)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+function nl2br(str = "") {
+  return String(str).replaceAll(/\r?\n/g, "<br>");
 }
