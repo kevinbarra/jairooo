@@ -47,36 +47,59 @@
       <h2>Our Services</h2>
       <div class="services">
         <div class="service">
-          <img src="images/wood.png" alt="Wood flooring installation" />
+          <img src="images/wood.png" alt="Wood flooring installation" loading="lazy" />
           <h3>Hardwood</h3>
           <p>Solid and engineered wood installation and repairs with durable finishes.</p>
         </div>
         <div class="service">
-          <img src="images/vinyl.png" alt="Vinyl flooring installation" />
+          <img src="images/vinyl.png" alt="Vinyl flooring installation" loading="lazy" />
           <h3>Vinyl &amp; Laminate</h3>
           <p>Water-resistant options that combine style and durability for busy areas.</p>
         </div>
         <div class="service">
-          <img src="images/tile.png" alt="Tile installation" />
+          <img src="images/tile.png" alt="Tile installation" loading="lazy" />
           <h3>Tile</h3>
           <p>Kitchen and bath tile installation for high-traffic and wet areas.</p>
         </div>
         <div class="service">
-          <img src="images/carpet.png" alt="Carpet installation" />
+          <img src="images/carpet.png" alt="Carpet installation" loading="lazy" />
           <h3>Carpet</h3>
           <p>Soft, long-lasting carpets that add comfort and improve acoustics.</p>
         </div>
       </div>
     </section>
 
-    <section id="gallery">
+    <!-- Gallery - HYBRID CAROUSEL -->
+    <section id="gallery" aria-label="Project Gallery">
       <h2>Project Gallery</h2>
-      <div class="gallery">
-        <img src="images/wood.png" alt="Hardwood flooring project" />
-        <img src="images/vinyl.png" alt="Vinyl flooring project" />
-        <img src="images/tile.png" alt="Tile project" />
-        <img src="images/carpet.png" alt="Carpet project" />
+
+      <div class="carousel" data-autoloop aria-live="off">
+        <ul class="carousel-track" id="galleryTrackEn">
+          <!-- Add more slides as needed -->
+          <li class="slide">
+            <figure class="tile">
+              <img src="images/wood.png" alt="Walnut hardwood floor project" loading="lazy" />
+            </figure>
+          </li>
+          <li class="slide">
+            <figure class="tile">
+              <img src="images/vinyl.png" alt="Gray vinyl flooring project" loading="lazy" />
+            </figure>
+          </li>
+          <li class="slide">
+            <figure class="tile">
+              <img src="images/tile.png" alt="Light gray kitchen tile installation" loading="lazy" />
+            </figure>
+          </li>
+          <li class="slide">
+            <figure class="tile">
+              <img src="images/carpet.png" alt="Beige carpet installed in living room" loading="lazy" />
+            </figure>
+          </li>
+        </ul>
       </div>
+
+      <p class="hint">On mobile, swipe to explore.</p>
     </section>
 
     <section id="why">
@@ -183,6 +206,7 @@
       backdrop?.addEventListener('click', closeDrawer);
       drawer?.querySelectorAll('a').forEach(a => a.addEventListener('click', closeDrawer));
 
+      // Email submit
       const form = document.getElementById('contactForm');
       const statusEl = document.getElementById('formStatus');
       form?.addEventListener('submit', async (e) => {
@@ -212,6 +236,28 @@
           statusEl.textContent = 'Network error. Please try later.';
         }
       });
+
+      // Carousel (desktop clone)
+      const trackEn = document.getElementById('galleryTrackEn');
+      const mqDesktop = window.matchMedia('(min-width: 1024px)');
+      function setupCarouselEn(){
+        trackEn.querySelectorAll('.clone').forEach(n=>n.remove());
+        if (mqDesktop.matches) {
+          const slides = Array.from(trackEn.children);
+          slides.forEach(s => {
+            const c = s.cloneNode(true);
+            c.classList.add('clone');
+            trackEn.appendChild(c);
+          });
+          trackEn.setAttribute('data-loop','true');
+        } else {
+          trackEn.removeAttribute('data-loop');
+        }
+      }
+      setupCarouselEn();
+      mqDesktop.addEventListener?.('change', setupCarouselEn);
+      trackEn?.addEventListener('focusin', () => trackEn.classList.add('pause'));
+      trackEn?.addEventListener('focusout', () => trackEn.classList.remove('pause'));
     </script>
   </body>
 </html>
