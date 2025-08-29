@@ -1,9 +1,16 @@
 {
-  "name": "jairos-flooring-site",
-  "private": true,
+  "name": "jairos-flooring",
   "version": "1.0.0",
+  "private": true,
+  "description": "Website for Jairo’s Flooring (ES/EN) with Twilio SMS via Vercel Functions",
+  "license": "MIT",
   "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo \"Static site - no build step\"",
+    "start": "vercel dev"
+  },
   "dependencies": {
-    "twilio": "^4.21.0"
+    "twilio": "^5.3.3"
   }
 }
